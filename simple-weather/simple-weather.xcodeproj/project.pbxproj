@@ -13,6 +13,8 @@
 		7F259F3C226E3098008F5FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3B226E3098008F5FA3 /* Assets.xcassets */; };
 		7F259F3F226E3098008F5FA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */; };
 		7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F49226EEB26008F5FA3 /* TableViewCell.swift */; };
+		7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4D226F003D008F5FA3 /* Extras.swift */; };
+		7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7F259F3E226E3098008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F259F40226E3098008F5FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F259F49226EEB26008F5FA3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7F259F4D226F003D008F5FA3 /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
+		7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		7F259F33226E3097008F5FA3 /* simple-weather */ = {
 			isa = PBXGroup;
 			children = (
+				7F259F4C226F0020008F5FA3 /* Extras */,
+				7F259F4B226F0013008F5FA3 /* Extensions */,
 				7F259F48226EE8DC008F5FA3 /* Model */,
 				7F259F47226EE8D4008F5FA3 /* View */,
 				7F259F46226EE8B0008F5FA3 /* Controller */,
@@ -87,8 +93,24 @@
 		7F259F48226EE8DC008F5FA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7F259F4B226F0013008F5FA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7F259F4C226F0020008F5FA3 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				7F259F4D226F003D008F5FA3 /* Extras.swift */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */,
+				7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */,
 				7F259F37226E3097008F5FA3 /* ViewController.swift in Sources */,
+				7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */,
 				7F259F35226E3097008F5FA3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
