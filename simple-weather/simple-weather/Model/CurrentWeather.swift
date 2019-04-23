@@ -48,5 +48,4 @@ class CurrentWeather {
 //        print("not yet")
 //    }
     
-    
 }

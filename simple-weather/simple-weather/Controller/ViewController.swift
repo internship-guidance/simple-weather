@@ -15,9 +15,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-//    var currentWeather: CurrentWeather!
+    var currentWeather: CurrentWeather!
+
+    let url = "https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=4ec61b9764720fc34bc6123d2169ab81"
+    
+    
+//    struct Weather {
 //
-//    let url = "https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=4ec61b9764720fc34bc6123d2169ab81"
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +43,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        currentWeather.downloadCurrentWeather() {
 //            print("Data is downloaded!!!")
 //        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
         locationLabel.text = "\(locValue.latitude) \(locValue.longitude)"
     }
 }
