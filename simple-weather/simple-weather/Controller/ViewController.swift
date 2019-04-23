@@ -35,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
+        
 //        let stringURL = NSURL(string: url)
 //        let weatherObject = NSData(contentsOf: stringURL! as URL)
 //        print(weatherObject)
@@ -49,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        locationLabel.text = "\(locValue.latitude) \(locValue.longitude)"
+        locationLabel.text = "locationslocations\(locValue.latitude) \(locValue.longitude)"
     }
 }
 
