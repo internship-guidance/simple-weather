@@ -9,25 +9,25 @@
 /* Begin PBXBuildFile section */
 		7F259F35226E3097008F5FA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F34226E3097008F5FA3 /* AppDelegate.swift */; };
 		7F259F37226E3097008F5FA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F36226E3097008F5FA3 /* ViewController.swift */; };
-		7F259F3A226E3097008F5FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F38226E3097008F5FA3 /* Main.storyboard */; };
 		7F259F3C226E3098008F5FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3B226E3098008F5FA3 /* Assets.xcassets */; };
 		7F259F3F226E3098008F5FA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */; };
 		7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F49226EEB26008F5FA3 /* TableViewCell.swift */; };
 		7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4D226F003D008F5FA3 /* Extras.swift */; };
 		7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */; };
+		7F259F53226F47F1008F5FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F51226F47F1008F5FA3 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7F259F31226E3097008F5FA3 /* simple-weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "simple-weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F259F34226E3097008F5FA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F259F36226E3097008F5FA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7F259F39226E3097008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F259F3B226E3098008F5FA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F259F3E226E3098008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F259F40226E3098008F5FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F259F49226EEB26008F5FA3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7F259F4D226F003D008F5FA3 /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
 		7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		7F259F52226F47F1008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 				7F259F47226EE8D4008F5FA3 /* View */,
 				7F259F46226EE8B0008F5FA3 /* Controller */,
 				7F259F34226E3097008F5FA3 /* AppDelegate.swift */,
-				7F259F38226E3097008F5FA3 /* Main.storyboard */,
+				7F259F51226F47F1008F5FA3 /* Main.storyboard */,
 				7F259F3B226E3098008F5FA3 /* Assets.xcassets */,
 				7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */,
 				7F259F40226E3098008F5FA3 /* Info.plist */,
@@ -171,9 +171,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F259F53226F47F1008F5FA3 /* Main.storyboard in Resources */,
 				7F259F3F226E3098008F5FA3 /* LaunchScreen.storyboard in Resources */,
 				7F259F3C226E3098008F5FA3 /* Assets.xcassets in Resources */,
-				7F259F3A226E3097008F5FA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,20 +195,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7F259F38226E3097008F5FA3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7F259F39226E3097008F5FA3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7F259F3E226E3098008F5FA3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7F259F51226F47F1008F5FA3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F259F52226F47F1008F5FA3 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
