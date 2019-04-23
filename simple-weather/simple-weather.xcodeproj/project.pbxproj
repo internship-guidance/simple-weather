@@ -12,6 +12,7 @@
 		7F259F3A226E3097008F5FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F38226E3097008F5FA3 /* Main.storyboard */; };
 		7F259F3C226E3098008F5FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3B226E3098008F5FA3 /* Assets.xcassets */; };
 		7F259F3F226E3098008F5FA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */; };
+		7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F49226EEB26008F5FA3 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7F259F3B226E3098008F5FA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F259F3E226E3098008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F259F40226E3098008F5FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F259F49226EEB26008F5FA3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,39 @@
 		7F259F33226E3097008F5FA3 /* simple-weather */ = {
 			isa = PBXGroup;
 			children = (
+				7F259F48226EE8DC008F5FA3 /* Model */,
+				7F259F47226EE8D4008F5FA3 /* View */,
+				7F259F46226EE8B0008F5FA3 /* Controller */,
 				7F259F34226E3097008F5FA3 /* AppDelegate.swift */,
-				7F259F36226E3097008F5FA3 /* ViewController.swift */,
 				7F259F38226E3097008F5FA3 /* Main.storyboard */,
 				7F259F3B226E3098008F5FA3 /* Assets.xcassets */,
 				7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */,
 				7F259F40226E3098008F5FA3 /* Info.plist */,
 			);
 			path = "simple-weather";
+			sourceTree = "<group>";
+		};
+		7F259F46226EE8B0008F5FA3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F259F36226E3097008F5FA3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7F259F47226EE8D4008F5FA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7F259F49226EEB26008F5FA3 /* TableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7F259F48226EE8DC008F5FA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */,
 				7F259F37226E3097008F5FA3 /* ViewController.swift in Sources */,
 				7F259F35226E3097008F5FA3 /* AppDelegate.swift in Sources */,
 			);
