@@ -36,8 +36,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-jB-Zbv">
-                                        <rect key="frame" x="20" y="237" width="75.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-jB-Zbv">
+                                        <rect key="frame" x="20" y="237" width="150" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                     <constraint firstItem="o3W-ys-IbW" firstAttribute="top" secondItem="YW4-dZ-YQ7" secondAttribute="top" id="raY-v4-Pvm"/>
                                     <constraint firstAttribute="trailing" secondItem="o3W-ys-IbW" secondAttribute="trailing" id="tQ0-dm-dRf"/>
                                     <constraint firstItem="o3W-ys-IbW" firstAttribute="leading" secondItem="YW4-dZ-YQ7" secondAttribute="leading" id="u9s-g3-gP4"/>
-                                    <constraint firstItem="Xaw-Tl-70L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dNR-jB-Zbv" secondAttribute="trailing" multiplier="10:9" constant="8" id="uWe-No-iEb"/>
+                                    <constraint firstItem="Xaw-Tl-70L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dNR-jB-Zbv" secondAttribute="trailing" constant="8" id="uWe-No-iEb"/>
                                     <constraint firstAttribute="bottom" secondItem="dNR-jB-Zbv" secondAttribute="bottom" constant="50" id="vrQ-Ad-5cN"/>
                                     <constraint firstItem="dNR-jB-Zbv" firstAttribute="leading" secondItem="YW4-dZ-YQ7" secondAttribute="leading" constant="20" id="zdD-mK-LYv"/>
                                 </constraints>

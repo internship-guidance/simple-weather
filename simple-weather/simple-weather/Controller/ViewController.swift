@@ -20,11 +20,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentWeather: CurrentWeather!
 
-    let url = "https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=4ec61b9764720fc34bc6123d2169ab81"
+    let url = "http://api.openweathermap.org/data/2.5/weather?lat=24&lon=134&appid=4ec61b9764720fc34bc6123d2169ab81"
+
     
-//    struct Weather {
-//
-//    }
+    struct Weather {
+        var weatherMain: String
+        var countryName: String
+        var temp: Double
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,22 +44,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateFormatter.dateFormat = "MMMM dd, yyyy";
         let myDate = dateFormatter.string(from: Date.init())
         dateLabel.text = "Today, \(myDate)"
-        
-//        let stringURL = NSURL(string: url)
-//        let weatherObject = NSData(contentsOf: stringURL! as URL)
-//        print(weatherObject)
-//
-//        currentWeather = CurrentWeather()
-//        currentWeather.downloadCurrentWeather() {
-//            print("Data is downloaded!!!")
-//        }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        locationLabel.text = "location\(locValue.latitude) \(locValue.longitude)"
+        let jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=\(locValue.latitude)&lon=\(locValue.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
+        print(jsonUrl)
     }
 }
 
