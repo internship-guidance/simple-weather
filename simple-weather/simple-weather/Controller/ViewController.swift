@@ -21,13 +21,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var currentWeather: CurrentWeather!
 
     let url = "http://api.openweathermap.org/data/2.5/weather?lat=24&lon=134&appid=4ec61b9764720fc34bc6123d2169ab81"
-
-    
-    struct Weather {
-        var weatherMain: String
-        var countryName: String
-        var temp: Double
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +33,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
+        locationLabel.text = url
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy";
         let myDate = dateFormatter.string(from: Date.init())
@@ -51,6 +46,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         let jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=\(locValue.latitude)&lon=\(locValue.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
         print(jsonUrl)
+        
+        //fetchCurrentWeather
     }
+    // {}
+    
+    //getData {url request -> response -> initialize currentWeather object -> set into viewControllerCurrentWeather variable}
 }
 
