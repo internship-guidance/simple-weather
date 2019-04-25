@@ -9,9 +9,12 @@
 import Foundation
 import CoreLocation
 
+enum NetworkError: Error {
+    case badURL
+}
 struct APIService {
     
-    func getData(coordinates: CLLocationCoordinate2D, completionHandler: @escaping (CurrentWeather) -> Void) {
+    func getData(coordinates: CLLocationCoordinate2D, completionHandler: @escaping (Result <CurrentWeather, NetworkError>) -> Void) {
         let jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
         print(jsonUrl)
         
@@ -49,7 +52,7 @@ struct APIService {
                     
                         let currentWeather = CurrentWeather(cityName: countryName, weatherType: weatherCondition, currentTemp: temperature)
                     
-                        completionHandler(currentWeather)
+                        completionHandler(.success(currentWeather))
                     }
                 }
                 

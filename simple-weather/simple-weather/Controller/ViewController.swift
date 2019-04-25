@@ -45,27 +45,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
-        APIService().getData(coordinates: locValue) { currentWeather in
-            DispatchQueue.main.async {
-                 self.locationLabel.text = currentWeather.cityName
-                self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
-                self.weatherLabel.text = currentWeather.weatherType
-                
-                self.weatherImage.image = UIImage(named: "Clear")
-                
-                if currentWeather.weatherType == "Clouds" {
-                    self.weatherImage.image = UIImage(named: "Clouds")
-                } else if currentWeather.weatherType == "Rain" {
-                    self.weatherImage.image = UIImage(named: "Rain")
-                } else if currentWeather.weatherType == "Partially Cloudy" {
-                    self.weatherImage.image = UIImage(named: "Partially Cloudy")
-                } else if currentWeather.weatherType == "Snow" {
-                    self.weatherImage.image = UIImage(named: "Snow")
-                } else if currentWeather.weatherType == "Clear" {
-                    self.weatherImage.image = UIImage(named: "Clear")
-                } else {
-                    self.weatherImage.image = UIImage(named: "Thunderstorm")
+        APIService().getData(coordinates: locValue) { (result) in
+            switch result {
+            case .success(let currentWeather):
+                DispatchQueue.main.async {
+                    self.locationLabel.text = currentWeather.cityName
+                    self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
+                    self.weatherLabel.text = currentWeather.weatherType
+                    self.weatherImage.image = UIImage(named: currentWeather.weatherType)
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
