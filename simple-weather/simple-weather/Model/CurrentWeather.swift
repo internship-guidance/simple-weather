@@ -12,5 +12,6 @@ struct CurrentWeather {
     var cityName = ""
     var weatherType = ""
     var currentTemp = 0.0
+    var countryType = ""
 }
 

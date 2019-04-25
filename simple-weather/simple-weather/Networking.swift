@@ -50,12 +50,16 @@ struct APIService {
                         let weatherCondition = weatherMain[0]["main"] as? String {
                         print ("Current weather type is -> \(weatherCondition)")
                     
-                        let currentWeather = CurrentWeather(cityName: countryName, weatherType: weatherCondition, currentTemp: temperature)
+                        if let countrySymbols = jsonArray ["sys"] as? [String: Any],
+                            let countrySymbol = countrySymbols["country"] as? String {
+                            print("Current country is -> \(countrySymbol)")
+                        
+                        let currentWeather = CurrentWeather(cityName: countryName, weatherType: weatherCondition, currentTemp: temperature, countryType: countrySymbol)
                     
                         completionHandler(.success(currentWeather))
                     }
                 }
-                
+                }
             } catch let parsingError {
                 print("Error", parsingError)
             }

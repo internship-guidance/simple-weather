@@ -47,7 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch result {
             case .success(let currentWeather):
                 DispatchQueue.main.async {
-                    self.locationLabel.text = currentWeather.cityName
+                    self.locationLabel.text = ("\(currentWeather.cityName), \(currentWeather.countryType)")
                     self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
                     self.weatherLabel.text = currentWeather.weatherType
                     self.weatherImage.image = UIImage(named: currentWeather.weatherType)
