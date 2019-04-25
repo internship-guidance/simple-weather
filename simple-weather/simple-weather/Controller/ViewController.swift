@@ -40,11 +40,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateLabel.text = "Today, \(myDate)"
     }
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        
+
         APIService().getData(coordinates: locValue) { (result) in
             switch result {
             case .success(let currentWeather):
