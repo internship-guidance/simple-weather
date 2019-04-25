@@ -15,6 +15,7 @@
 		7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4D226F003D008F5FA3 /* Extras.swift */; };
 		7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */; };
 		7F259F53226F47F1008F5FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F51226F47F1008F5FA3 /* Main.storyboard */; };
+		7F259F552270B6AE008F5FA3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F542270B6AE008F5FA3 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7F259F4D226F003D008F5FA3 /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
 		7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		7F259F52226F47F1008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7F259F542270B6AE008F5FA3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7F259F47226EE8D4008F5FA3 /* View */,
 				7F259F46226EE8B0008F5FA3 /* Controller */,
 				7F259F34226E3097008F5FA3 /* AppDelegate.swift */,
+				7F259F542270B6AE008F5FA3 /* Networking.swift */,
 				7F259F51226F47F1008F5FA3 /* Main.storyboard */,
 				7F259F3B226E3098008F5FA3 /* Assets.xcassets */,
 				7F259F3D226E3098008F5FA3 /* LaunchScreen.storyboard */,
@@ -187,6 +190,7 @@
 				7F259F4A226EEB26008F5FA3 /* TableViewCell.swift in Sources */,
 				7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */,
 				7F259F37226E3097008F5FA3 /* ViewController.swift in Sources */,
+				7F259F552270B6AE008F5FA3 /* Networking.swift in Sources */,
 				7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */,
 				7F259F35226E3097008F5FA3 /* AppDelegate.swift in Sources */,
 			);
