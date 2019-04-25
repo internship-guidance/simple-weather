@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var weatherLabel: UILabel!
     @IBOutlet var tempLabel: UILabel!
     @IBOutlet var weatherImage: UIImageView!
+    @IBOutlet var tableView: UITableView!
+    
     
     let today = Date()
     
