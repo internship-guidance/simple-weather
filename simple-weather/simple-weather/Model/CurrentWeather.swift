@@ -10,10 +10,7 @@ import Foundation
 
 struct CurrentWeather {
     var cityName = ""
-    var date = ""
     var weatherType = ""
     var currentTemp = 0.0
-
-    //confirm codable protocol
 }
 

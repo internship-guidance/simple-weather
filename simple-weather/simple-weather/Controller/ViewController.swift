@@ -13,13 +13,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var weatherLabel: UILabel!
+    @IBOutlet var tempLabel: UILabel!
+    @IBOutlet var weatherImage: UIImageView!
     
     let today = Date()
     
     let locationManager = CLLocationManager()
     
-    var currentWeather: CurrentWeather!
-
     let url = "http://api.openweathermap.org/data/2.5/weather?lat=24&lon=134&appid=4ec61b9764720fc34bc6123d2169ab81"
     
     override func viewDidLoad() {
@@ -29,11 +30,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
             locationManager.startUpdatingLocation()
         }
-        
-        locationLabel.text = url
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy";
@@ -41,16 +40,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateLabel.text = "Today, \(myDate)"
     }
     
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        let jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=\(locValue.latitude)&lon=\(locValue.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
-        print(jsonUrl)
         
-        //fetchCurrentWeather
+        APIService().getData(coordinates: locValue) { (result) in
+            switch result {
+            case .success(let currentWeather):
+                DispatchQueue.main.async {
+                    self.locationLabel.text = currentWeather.cityName
+                    self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
+                    self.weatherLabel.text = currentWeather.weatherType
+                    self.weatherImage.image = UIImage(named: currentWeather.weatherType)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
-    // {}
-    
-    //getData {url request -> response -> initialize currentWeather object -> set into viewControllerCurrentWeather variable}
 }
-
