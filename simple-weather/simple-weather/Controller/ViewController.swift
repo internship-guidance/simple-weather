@@ -40,8 +40,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateLabel.text = "Today, \(myDate)"
     }
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
@@ -51,21 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
                 self.weatherLabel.text = currentWeather.weatherType
                 
-                self.weatherImage.image = UIImage(named: "Clear")
-                
-                if currentWeather.weatherType == "Clouds" {
-                    self.weatherImage.image = UIImage(named: "Clouds")
-                } else if currentWeather.weatherType == "Rain" {
-                    self.weatherImage.image = UIImage(named: "Rain")
-                } else if currentWeather.weatherType == "Partially Cloudy" {
-                    self.weatherImage.image = UIImage(named: "Partially Cloudy")
-                } else if currentWeather.weatherType == "Snow" {
-                    self.weatherImage.image = UIImage(named: "Snow")
-                } else if currentWeather.weatherType == "Clear" {
-                    self.weatherImage.image = UIImage(named: "Clear")
-                } else {
-                    self.weatherImage.image = UIImage(named: "Thunderstorm")
-                }
+                self.weatherImage.image = UIImage(named: currentWeather.weatherType)
             }
         }
     }
