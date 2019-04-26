@@ -27,7 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cellDelegate()
+        tableView.dataSource = self
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -40,11 +40,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateFormatter.dateFormat = "MMMM dd, yyyy";
         let myDate = dateFormatter.string(from: Date.init())
         dateLabel.text = "Today, \(myDate)"
-    }
-    
-    func cellDelegate() {
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -66,8 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell
         cell.configureCell(weekDay: "tomorrow", maxTemp: 20, minTemp: 10, weatherCondition: "Clear", weatherPic: "Clear Mini")
