@@ -49,7 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-
+        
         APIService().getData(coordinates: locValue) { (result) in
             switch result {
             case .success(let currentWeather):
@@ -65,10 +65,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 }
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell

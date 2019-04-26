@@ -15,18 +15,6 @@ class ForecastCell: UITableViewCell {
     @IBOutlet var forecastMinTemp: UILabel!
     @IBOutlet var forecastMaxTemp: UILabel!
     @IBOutlet var forecastDay: UILabel!
-    
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     func configureCell(weekDay: String, maxTemp: Int, minTemp: Int, weatherCondition: String, weatherPic: String) {
         self.forecastDay.text = weekDay
@@ -34,5 +22,5 @@ class ForecastCell: UITableViewCell {
         self.forecastMinTemp.text = "\(minTemp)"
         self.forecastWeather.text = weatherCondition
         self.forecastPic.image = UIImage(named: weatherPic)
-}
+    }
 }
