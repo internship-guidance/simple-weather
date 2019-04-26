@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var weatherLabel: UILabel!
     @IBOutlet var tempLabel: UILabel!
     @IBOutlet var weatherImage: UIImageView!
+    @IBOutlet var tableView: UITableView!
+    
     
     let today = Date()
     
@@ -25,7 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.dataSource = self
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -42,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-
+        
         APIService().getData(coordinates: locValue) { (result) in
             switch result {
             case .success(let currentWeather):
@@ -56,5 +58,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell
+        cell.configureCell(weekDay: "tomorrow", maxTemp: 20, minTemp: 10, weatherCondition: "Clear", weatherPic: "Clear Mini")
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 }
