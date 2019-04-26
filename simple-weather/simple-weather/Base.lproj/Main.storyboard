@@ -76,40 +76,40 @@
                                     <constraint firstItem="dNR-jB-Zbv" firstAttribute="leading" secondItem="YW4-dZ-YQ7" secondAttribute="leading" constant="20" id="zdD-mK-LYv"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-G7-BqT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-G7-BqT">
                                 <rect key="frame" x="0.0" y="331" width="320" height="237"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ForecastCell" rowHeight="70" id="Zx8-k7-IOX" customClass="ForecastCell" customModule="simple_weather" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ForecastCell" rowHeight="70" id="Zx8-k7-IOX" customClass="ForecastCell" customModule="simple_weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zx8-k7-IOX" id="tfH-jE-g3S">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear Mini" translatesAutoresizingMaskIntoConstraints="NO" id="RIi-57-t9e">
-                                                    <rect key="frame" x="25" y="11" width="40" height="48"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snow Mini" translatesAutoresizingMaskIntoConstraints="NO" id="RIi-57-t9e">
+                                                    <rect key="frame" x="25" y="11" width="34" height="48"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weekDay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ec-o9-y5J">
-                                                    <rect key="frame" x="85" y="11" width="70" height="21"/>
+                                                    <rect key="frame" x="79" y="11" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weatherCondition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKe-Us-zhZ">
-                                                    <rect key="frame" x="85" y="38" width="136" height="21"/>
+                                                    <rect key="frame" x="79" y="38" width="136" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="max.temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wP-v8-mIs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="max.temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wP-v8-mIs">
                                                     <rect key="frame" x="234" y="10" width="76" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minTemp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPS-iO-Eiq">
-                                                    <rect key="frame" x="241" y="48.5" width="69" height="21"/>
+                                                    <rect key="frame" x="241" y="31" width="69" height="38.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -119,6 +119,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="RIi-57-t9e" secondAttribute="bottom" id="43W-Oi-0WJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="4wP-v8-mIs" secondAttribute="trailing" constant="10" id="EUs-bw-X18"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wKe-Us-zhZ" secondAttribute="trailing" constant="20" symbolic="YES" id="Ehg-DC-U3h"/>
+                                                <constraint firstItem="iPS-iO-Eiq" firstAttribute="top" secondItem="4wP-v8-mIs" secondAttribute="bottom" id="FST-s6-X5a"/>
                                                 <constraint firstItem="RIi-57-t9e" firstAttribute="top" secondItem="tfH-jE-g3S" secondAttribute="topMargin" id="FrU-w1-bzC"/>
                                                 <constraint firstItem="0Ec-o9-y5J" firstAttribute="leading" secondItem="RIi-57-t9e" secondAttribute="trailing" constant="20" id="MIU-O0-cEr"/>
                                                 <constraint firstItem="iPS-iO-Eiq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wKe-Us-zhZ" secondAttribute="trailing" constant="8" symbolic="YES" id="OeZ-ow-PMT"/>
@@ -172,6 +173,6 @@
     </scenes>
     <resources>
         <image name="Clear" width="107" height="107"/>
-        <image name="Clear Mini" width="40" height="40"/>
+        <image name="Snow Mini" width="34" height="35"/>
     </resources>
 </document>

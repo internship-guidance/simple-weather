@@ -28,11 +28,11 @@ class ForecastCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(weekDay: String, maxTemp: Int, minTemp: Int, weatherCondition: String) {
+    func configureCell(weekDay: String, maxTemp: Int, minTemp: Int, weatherCondition: String, weatherPic: String) {
         self.forecastDay.text = weekDay
         self.forecastMaxTemp.text = "\(maxTemp)"
         self.forecastMinTemp.text = "\(minTemp)"
         self.forecastWeather.text = weatherCondition
-//        self.forecastPic.image = weatherPic(named: "Clear")
+        self.forecastPic.image = UIImage(named: weatherPic)
 }
 }

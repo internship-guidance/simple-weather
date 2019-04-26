@@ -27,7 +27,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         cellDelegate()
         locationManager.requestAlwaysAuthorization()
         
@@ -73,7 +72,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell
-        cell.configureCell(weekDay: "tomorrow", maxTemp: 20, minTemp: 10, weatherCondition: "Clear")
+        cell.configureCell(weekDay: "tomorrow", maxTemp: 20, minTemp: 10, weatherCondition: "Clear", weatherPic: "Clear Mini")
         return cell
     }
     
