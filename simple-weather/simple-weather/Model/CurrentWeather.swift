@@ -7,11 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
 struct CurrentWeather {
-    var cityName = ""
-    var weatherType = ""
-    var currentTemp = 0.0
-    var countryType = ""
+    var city: String
+    var country: String
+    
+    var location: String {
+        get {
+            return "\(city), \(country)"
+        }
+    }
+    var _temperature: Double
+    var temperature: Double {
+        get {
+            return _temperature
+        }
+        set {
+            _temperature = newValue - 273.15
+        }
+    }
+    
+    var weather: String
+    var image: UIImage? {
+        return UIImage(named: weather)
+    }
 }
 
