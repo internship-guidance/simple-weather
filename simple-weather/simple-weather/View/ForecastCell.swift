@@ -16,11 +16,11 @@ class ForecastCell: UITableViewCell {
     @IBOutlet var forecastMaxTemp: UILabel!
     @IBOutlet var forecastDay: UILabel!
     
-    func configureCell(weekDay: String, maxTemp: Double, minTemp: Double, weatherCondition: String, weatherPic: String) {
-        self.forecastDay.text = weekDay
-        self.forecastMaxTemp.text = "\(maxTemp)°"
-        self.forecastMinTemp.text = "\(minTemp)°"
-        self.forecastWeather.text = weatherCondition
-        self.forecastPic.image = UIImage(named: weatherPic)
+    func configureCell(forecastWeather: ForecastWeather) {
+        self.forecastWeather.text = forecastWeather.weatherCondition
+        self.forecastDay.text = forecastWeather.weekDay
+        self.forecastPic.image = forecastWeather.image
+        self.forecastMinTemp.text = NSString(format: "%.2f°C", forecastWeather.minTemp) as String
+        self.forecastMaxTemp.text = NSString(format: "%.2f°C", forecastWeather.maxTemp) as String
     }
 }

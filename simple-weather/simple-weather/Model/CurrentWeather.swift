@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 struct CurrentWeather {
-    var city: String
-    var country: String
+    private var city: String
+    private var country: String
     
     var location: String {
         get {
             return "\(city), \(country)"
         }
     }
-    var _temperature: Double
+    private var _temperature: Double = 0
     var temperature: Double {
         get {
             return _temperature
@@ -31,6 +31,13 @@ struct CurrentWeather {
     var weather: String
     var image: UIImage? {
         return UIImage(named: weather)
+    }
+    
+    init(city: String, country: String, temperature: Double, weather: String) {
+        self.city = city
+        self.country = country
+        self.weather = weather
+        self.temperature = temperature
     }
 }
 

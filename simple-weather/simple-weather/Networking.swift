@@ -27,7 +27,6 @@ struct APIService {
             }
             
             do {
-                //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     dataResponse, options: [])
                 
@@ -39,8 +38,6 @@ struct APIService {
                 
                 if let tempObj = jsonArray["main"] as? [String: Any],
                     let temperature = tempObj ["temp"] as? Double {
-                    let temperatureInCelsiusRaw = (temperature - 273.15)
-                    let temperatureInCelsius = (round(1000*temperatureInCelsiusRaw)/1000)
                     
                     if let weatherMain = jsonArray ["weather"] as? [[String: Any]],
                         let weatherCondition = weatherMain[0]["main"] as? String {
@@ -48,7 +45,7 @@ struct APIService {
                         if let countrySymbols = jsonArray ["sys"] as? [String: Any],
                             let countrySymbol = countrySymbols["country"] as? String {
                             
-                            let currentWeather = CurrentWeather(city: countryName, country: countrySymbol, _temperature: temperatureInCelsius, weather: weatherCondition)
+                            let currentWeather = CurrentWeather(city: countryName, country: countrySymbol, temperature: temperature, weather: weatherCondition)
                             
                             completionHandler(.success(currentWeather))
                         }
@@ -84,39 +81,37 @@ struct APIService {
                 var forecastWeatherArray: [ForecastWeather] = []
                 
                 if let weekDays = jsonArray["list"] as? [[String: Any]] {
+                    
                     for weekDay in weekDays {
-                        if let date = weekDay["dt"] as? Double {
-                            let date = Date(timeIntervalSince1970: date)
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "EEEE"
-                            let dateIs = dateFormatter.string(from: date)
-                            
-                            if let weather = weekDay["weather"] as? [[String: Any]] {
-                                if let currentCondition = weather[0]["main"] as? String {
-                                    
-                                    if let maxTemp = weekDay["main"] as? [String: Any] {
-                                        if let maxTemperature = maxTemp["temp_max"] as? Double {
-                                            let temperatureInCelsiusRaw = (maxTemperature - 273.15)
-                                            let maxTemperatureInCelsius = (round(1000*temperatureInCelsiusRaw)/1000)
-                                            
-                                            if let minTemp = weekDay["main"] as? [String: Any] {
-                                                if let minTemperature = minTemp["temp_min"] as? Double {
-                                                    let temperatureInCelsiusRaw = (minTemperature - 273.15)
-                                                    let minTemperatureInCelsius = (round(1000*temperatureInCelsiusRaw)/1000)
-                                                    
-                                                    let forecastWeather = ForecastWeather(weekDay: "\(dateIs)", maxTemp: maxTemperatureInCelsius, minTemp: minTemperatureInCelsius, weatherCondition: currentCondition, weatherPic: currentCondition)
-                                                    
-                                                    forecastWeatherArray.append(forecastWeather)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        guard let dt = weekDay["dt"] as? Double else {
+                            return
                         }
+                        
+                        let date = Date(timeIntervalSince1970: dt)
+                        let tomorrow: Date? = Calendar.current.date(byAdding: .day, value: 1, to: date)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "EEEE"
+                        let tomorrowDate = dateFormatter.string(from: tomorrow ?? date)
+                        
+                        guard let weather = weekDay["weather"] as? [[String: Any]],
+                            let currentCondition = weather[0]["main"] as? String else {
+                                return
+                        }
+                        
+                        guard let main = weekDay["main"] as? [String: Any],
+                            let maxTemp = main["temp_max"] as? Double,
+                            let minTemp = main["temp_min"] as? Double else {
+                                return
+                        }
+                        
+                        let forecastWeather = ForecastWeather.init(weekday: tomorrowDate, maxTemp: maxTemp, minTemp: minTemp, weatherCondition: currentCondition)
+                        
+                        
+                        forecastWeatherArray.append(forecastWeather)
                     }
-                    completionHandler(.success(forecastWeatherArray))
                 }
+                
+                completionHandler(.success(forecastWeatherArray))
             } catch {
                 print("Error", error)
             }

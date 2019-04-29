@@ -50,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             case .success(let currentWeather):
                 DispatchQueue.main.async {
                     self.locationLabel.text = currentWeather.location
-                    self.tempLabel.text = "\(currentWeather._temperature)°"
+                    self.tempLabel.text = NSString(format: "%.2f°C", currentWeather.temperature) as String
                     self.weatherLabel.text = currentWeather.weather
                     self.weatherImage.image = currentWeather.image
                 }
@@ -63,8 +63,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch result {
             case .success(let forecastWeather):
                 DispatchQueue.main.async {
-                    print(forecastWeather)
-                    // TODO:
                     self.forecastWeatherArray = forecastWeather
                     self.tableView.reloadData()
                 }
@@ -79,7 +77,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell
         let newValue = forecastWeatherArray[indexPath.row]
-        cell.configureCell(weekDay: newValue.weekDay, maxTemp: newValue.maxTemp, minTemp: newValue.minTemp, weatherCondition: newValue.weatherCondition, weatherPic: newValue.weatherCondition)
+        cell.configureCell(forecastWeather: newValue)
         
         return cell
     }
