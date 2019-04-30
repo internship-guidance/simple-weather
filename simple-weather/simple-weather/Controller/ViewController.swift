@@ -18,16 +18,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var weatherImage: UIImageView!
     @IBOutlet var tableView: UITableView!
     
+    var forecastWeatherArray: [ForecastWeather] = []
     
     let today = Date()
     
     let locationManager = CLLocationManager()
     
-    let url = "http://api.openweathermap.org/data/2.5/weather?lat=24&lon=134&appid=4ec61b9764720fc34bc6123d2169ab81"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
+        
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -35,7 +36,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
             locationManager.startUpdatingLocation()
         }
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy";
         let myDate = dateFormatter.string(from: Date.init())
@@ -49,10 +49,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch result {
             case .success(let currentWeather):
                 DispatchQueue.main.async {
-                    self.locationLabel.text = ("\(currentWeather.cityName), \(currentWeather.countryType)")
-                    self.tempLabel.text = "\(String(Int((currentWeather.currentTemp - 273.15))))°"
-                    self.weatherLabel.text = currentWeather.weatherType
-                    self.weatherImage.image = UIImage(named: currentWeather.weatherType)
+                    self.locationLabel.text = currentWeather.location
+                    self.tempLabel.text = NSString(format: "%.2f°C", currentWeather.temperature) as String
+                    self.weatherLabel.text = currentWeather.weather
+                    self.weatherImage.image = currentWeather.image
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        APIService().getDataForCell(coordinates: locValue) { (result) in
+            switch result {
+            case .success(let forecastWeather):
+                DispatchQueue.main.async {
+                    self.forecastWeatherArray = forecastWeather
+                    var filteredForecast = [ForecastWeather]()
+                    for index in 0 ..< forecastWeather.count {
+                        let item = forecastWeather[index]
+                        if filteredForecast.last?.weekDay != item.weekDay {
+                            filteredForecast.append(item)
+                        }
+                    }
+                    self.forecastWeatherArray = filteredForecast
+                    print(filteredForecast.count)
+                    self.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -64,11 +85,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell") as! ForecastCell
-        cell.configureCell(weekDay: "tomorrow", maxTemp: 20, minTemp: 10, weatherCondition: "Clear", weatherPic: "Clear Mini")
+        let newValue = forecastWeatherArray[indexPath.row]
+        cell.configureCell(forecastWeather: newValue)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return forecastWeatherArray.count
     }
 }

@@ -16,8 +16,6 @@ struct APIService {
     
     func getData(coordinates: CLLocationCoordinate2D, completionHandler: @escaping (Result <CurrentWeather, NetworkError>) -> Void) {
         let jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
-        print(jsonUrl)
-        
         
         guard let url = URL(string: jsonUrl) else {return}
         
@@ -29,36 +27,29 @@ struct APIService {
             }
             
             do {
-                //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     dataResponse, options: [])
-                print(jsonResponse) //Response result
                 
                 guard let jsonArray = jsonResponse as? [String: Any] else {
                     return
                 }
-                print(jsonArray)
                 
                 guard let countryName = jsonArray ["name"] as? String else { return }
-                print("The city name is -> \(countryName)")
                 
                 if let tempObj = jsonArray["main"] as? [String: Any],
                     let temperature = tempObj ["temp"] as? Double {
-                    print ("current temperature is -> \(temperature)")
                     
                     if let weatherMain = jsonArray ["weather"] as? [[String: Any]],
                         let weatherCondition = weatherMain[0]["main"] as? String {
-                        print ("Current weather type is -> \(weatherCondition)")
-                    
+                        
                         if let countrySymbols = jsonArray ["sys"] as? [String: Any],
                             let countrySymbol = countrySymbols["country"] as? String {
-                            print("Current country is -> \(countrySymbol)")
-                        
-                        let currentWeather = CurrentWeather(cityName: countryName, weatherType: weatherCondition, currentTemp: temperature, countryType: countrySymbol)
-                    
-                        completionHandler(.success(currentWeather))
+                            
+                            let currentWeather = CurrentWeather(city: countryName, country: countrySymbol, temperature: temperature, weather: weatherCondition)
+                            
+                            completionHandler(.success(currentWeather))
+                        }
                     }
-                }
                 }
             } catch let parsingError {
                 print("Error", parsingError)
@@ -66,4 +57,65 @@ struct APIService {
         }
         task.resume()
     }
+    
+    func getDataForCell(coordinates: CLLocationCoordinate2D, completionHandler: @escaping (Result <[ForecastWeather], NetworkError>) -> Void) {
+        let jsonUrlForCell = "http://api.openweathermap.org/data/2.5/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=4ec61b9764720fc34bc6123d2169ab81"
+        
+        guard let url = URL(string: jsonUrlForCell) else {return}
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return
+            }
+            do {
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                
+                guard let jsonArray = jsonResponse as? [String: Any] else {
+                    return
+                }
+                
+                var forecastWeatherArray: [ForecastWeather] = []
+                
+                if let weekDays = jsonArray["list"] as? [[String: Any]] {
+                    
+                    for weekDay in weekDays {
+                        guard let dt = weekDay["dt"] as? Double else {
+                            return
+                        }
+                        
+                        let date = Date(timeIntervalSince1970: dt)
+                        let tomorrow: Date? = Calendar.current.date(byAdding: .day, value: 1, to: date)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "EEEE"
+                        let tomorrowDate = dateFormatter.string(from: tomorrow ?? date)
+                        
+                        guard let weather = weekDay["weather"] as? [[String: Any]],
+                            let currentCondition = weather[0]["main"] as? String else {
+                                return
+                        }
+                        
+                        guard let main = weekDay["main"] as? [String: Any],
+                            let maxTemp = main["temp_max"] as? Double,
+                            let minTemp = main["temp_min"] as? Double else {
+                                return
+                        }
+                        
+                        let forecastWeather = ForecastWeather.init(weekday: tomorrowDate, maxTemp: maxTemp, minTemp: minTemp, weatherCondition: currentCondition)
+                        
+                        forecastWeatherArray.append(forecastWeather)
+                    }
+                }
+                
+                completionHandler(.success(forecastWeatherArray))
+            } catch {
+                print("Error", error)
+            }
+        }
+        task.resume()
+    }
 }
+

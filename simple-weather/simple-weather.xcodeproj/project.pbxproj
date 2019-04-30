@@ -16,6 +16,7 @@
 		7F259F53226F47F1008F5FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F259F51226F47F1008F5FA3 /* Main.storyboard */; };
 		7F259F552270B6AE008F5FA3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F542270B6AE008F5FA3 /* Networking.swift */; };
 		7F259F572271FA1D008F5FA3 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F562271FA1D008F5FA3 /* ForecastCell.swift */; };
+		7F259F5922730F50008F5FA3 /* ForecastWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F259F5822730F50008F5FA3 /* ForecastWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7F259F52226F47F1008F5FA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F259F542270B6AE008F5FA3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		7F259F562271FA1D008F5FA3 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		7F259F5822730F50008F5FA3 /* ForecastWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				7F259F4F226F0108008F5FA3 /* CurrentWeather.swift */,
+				7F259F5822730F50008F5FA3 /* ForecastWeather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				7F259F50226F0108008F5FA3 /* CurrentWeather.swift in Sources */,
 				7F259F37226E3097008F5FA3 /* ViewController.swift in Sources */,
+				7F259F5922730F50008F5FA3 /* ForecastWeather.swift in Sources */,
 				7F259F552270B6AE008F5FA3 /* Networking.swift in Sources */,
 				7F259F4E226F003D008F5FA3 /* Extras.swift in Sources */,
 				7F259F572271FA1D008F5FA3 /* ForecastCell.swift in Sources */,
