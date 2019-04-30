@@ -64,6 +64,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             case .success(let forecastWeather):
                 DispatchQueue.main.async {
                     self.forecastWeatherArray = forecastWeather
+                    var filteredForecast = [ForecastWeather]()
+                    for index in 0 ..< forecastWeather.count {
+                        let item = forecastWeather[index]
+                        if filteredForecast.last?.weekDay != item.weekDay {
+                            filteredForecast.append(item)
+                        }
+                    }
+                    self.forecastWeatherArray = filteredForecast
+                    print(filteredForecast.count)
                     self.tableView.reloadData()
                 }
             case .failure(let error):

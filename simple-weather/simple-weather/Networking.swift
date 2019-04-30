@@ -106,7 +106,6 @@ struct APIService {
                         
                         let forecastWeather = ForecastWeather.init(weekday: tomorrowDate, maxTemp: maxTemp, minTemp: minTemp, weatherCondition: currentCondition)
                         
-                        
                         forecastWeatherArray.append(forecastWeather)
                     }
                 }
