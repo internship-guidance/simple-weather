@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         tableView.dataSource = self
         
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -43,7 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        guard let locValue: CLLocationCoordinate2D = locations.last?.coordinate else { return }
         
         APIService().getData(coordinates: locValue) { (result) in
             switch result {
@@ -63,7 +63,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch result {
             case .success(let forecastWeather):
                 DispatchQueue.main.async {
-                    self.forecastWeatherArray = forecastWeather
                     var filteredForecast = [ForecastWeather]()
                     for index in 0 ..< forecastWeather.count {
                         let item = forecastWeather[index]
