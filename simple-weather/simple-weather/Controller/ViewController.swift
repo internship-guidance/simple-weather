@@ -33,13 +33,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = 1000
             locationManager.startUpdatingLocation()
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = " MMMM dd,  yyyy";
         let myDate = dateFormatter.string(from: Date.init())
         dateLabel.text = "Today, \(myDate)"
+        
+        tableView.backgroundColor = .gray
+        view.backgroundColor = .blue
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
