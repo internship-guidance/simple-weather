@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy";
+        dateFormatter.dateFormat = " MMMM dd,  yyyy";
         let myDate = dateFormatter.string(from: Date.init())
         dateLabel.text = "Today, \(myDate)"
     }
@@ -72,7 +72,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         }
                     }
                     self.forecastWeatherArray = filteredForecast
-                    print(filteredForecast.count)
                     self.tableView.reloadData()
                 }
             case .failure(let error):
